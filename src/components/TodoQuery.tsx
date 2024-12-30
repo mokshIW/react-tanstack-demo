@@ -2,7 +2,7 @@ import React from "react";
 import { useTodos, useTodosIds } from "../services/queries";
 import { useIsFetching } from "@tanstack/react-query";
 
-export default function Todo() {
+export default function TodoQuery() {
   //   const { data, isPending, isError } = useTodosIds();
   const todosIdsQuery = useTodosIds();
 
@@ -37,8 +37,8 @@ export default function Todo() {
           Query data status: {isFetching}
         </p>
 
-        {todosIdsQuery.data?.map((id) => (
-          <p key={id}>id: {id}</p>
+        {todosIdsQuery.data?.map((id, index) => (
+          <p key={id || `fallback-key-${index}`}>id: {id}</p>
         ))}
       </div>
       <div className="flex flex-col items-center justify-center">
@@ -50,10 +50,14 @@ export default function Todo() {
         </p>
 
         <ul>
-          {todosQueries.map(({ data }) => (
-            <li key={data?.id}>
-              <strong>ID:</strong> {data?.id} - <strong>Title:</strong>{" "}
-              {data?.title}
+          {todosQueries.map(({ data }, index) => (
+            <li key={data?.id || `fallback-key-${index}`}>
+              <span>
+                <strong>ID:</strong> {data?.id} - <strong>Title:</strong>{" "}
+                {data?.title} - <strong>Description:</strong>{" "}
+                {data?.description} - <strong>Checked:</strong>{" "}
+                {data?.checked ? "Yes" : "No"}
+              </span>
             </li>
           ))}
         </ul>
