@@ -21,7 +21,7 @@ export default function TodoQuery() {
   return (
     <div className="flex  items-start justify-center gap-6">
       <div className="flex flex-col items-center justify-center">
-        <h1 className="text-4xl font-bold text-gray-2200">useTodosIds</h1>
+        <h1 className="text-4xl font-bold text-gray-100">useTodosIds</h1>
         {/* .fetchStatus is about the function of the query */}
         <p className="p-4 font-bold text-green-800 bg-green-400 rounded-2xl my-4">
           Query function status: {todosIdsQuery.fetchStatus}
@@ -42,7 +42,7 @@ export default function TodoQuery() {
         ))}
       </div>
       <div className="flex flex-col items-center justify-center">
-        <h1 className="text-4xl font-bold text-gray-2200">useTodos</h1>
+        <h1 className="text-4xl font-bold text-gray-100">useTodos</h1>
 
         {/* useIsFetching() */}
         <p className="p-4 font-bold text-blue-800 bg-blue-400 rounded-2xl my-4">

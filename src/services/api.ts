@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Todo } from "../types/todo";
-import { act } from "react";
+import { Projects } from "../types/projects";
 
 const BASE_URL = "http://localhost:8080";
 const axiosInstance = axios.create({
@@ -35,4 +35,12 @@ export const updateTodo = async (data: Todo) => {
 // Delete Todo
 export const deleteTodo = async (id: number) => {
   await axiosInstance.delete(`todos/${id}`);
+};
+
+// Projects
+
+export const getProjects = async (page = 1) => {
+  return (
+    await axiosInstance.get<Projects[]>(`projects?_page=${page}&_limit=3`)
+  ).data;
 };
